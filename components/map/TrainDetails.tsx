@@ -142,15 +142,15 @@ export function TrainDetailsContent({ train }: { train: InterpolatedJourney }) {
     <div className="space-y-3 text-sm">
       <div>
         <div className="text-xs text-muted-foreground uppercase font-semibold mb-1">
-          Route
+          Trajet
         </div>
         <div className="flex flex-col gap-1">
           <div className="flex justify-between">
-            <span className="font-medium">Origin:</span>
+            <span className="font-medium">Origine :</span>
             <span className="text-right">{train.journey.OriginName}</span>
           </div>
           <div className="flex justify-between">
-            <span className="font-medium">Destination:</span>
+            <span className="font-medium">Destination :</span>
             <span className="text-right">{train.journey.DestinationName}</span>
           </div>
         </div>
@@ -158,7 +158,7 @@ export function TrainDetailsContent({ train }: { train: InterpolatedJourney }) {
 
       <div className="border-t pt-2">
         <div className="text-xs text-muted-foreground uppercase font-semibold mb-2">
-          Stops
+          Arrêts
         </div>
 
         <TrainStopsTimeline stops={stops} progress={progress} />
@@ -268,7 +268,7 @@ export function TrainDetailsCard({
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Zoomer sur</p>
+              <p>Zoomer sur le train</p>
             </TooltipContent>
           </Tooltip>
 

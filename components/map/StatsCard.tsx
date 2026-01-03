@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export function StatsCard({
   activeCount,
@@ -53,7 +54,9 @@ export function StatsCard({
         )}
       >
         <div className="flex justify-between items-center mb-3">
-          <h3 className="font-bold text-lg">Network Status</h3>
+          <Link href="/" className="font-bold text-lg">
+            Trainflow
+          </Link>
           <Button
             variant="ghost"
             size="icon"
@@ -68,17 +71,17 @@ export function StatsCard({
         </div>
         <div className="space-y-2">
           <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground">Active Trains</span>
+            <span className="text-sm text-muted-foreground">Trains Actifs</span>
             <span className="font-mono font-bold text-lg">{activeCount}</span>
           </div>
           <div className="pt-2 mt-2 border-t flex justify-between items-center">
-            <span className="text-xs text-muted-foreground">Last Update</span>
+            <span className="text-xs text-muted-foreground">Dernière MàJ</span>
             <span className="text-xs font-mono">
               {lastUpdate ? lastUpdate.toLocaleTimeString() : "--:--:--"}
             </span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-xs text-muted-foreground">Next Refresh</span>
+            <span className="text-xs text-muted-foreground">Prochaine MàJ</span>
             <span className="text-xs font-mono">
               {isRefreshing || timeLeft === 0 ? (
                 <LoaderCircle className="h-3 w-3 animate-spin inline-block" />

@@ -30,7 +30,7 @@ export function StationsLayer() {
   }, []);
 
   return (
-    <MapLayerGroup name="Stations" pane="stationsPane">
+    <MapLayerGroup name="Gares" pane="stationsPane">
       {stations.map((station) => (
         <MapMarker
           key={station.uic}
