@@ -1,0 +1,11 @@
+[
+    {
+        "name": "SNCF SIRI ET Lite (Estimated Timetable)",
+        "publisher": "SNCF",
+        "type": "SIRI",
+        "url": "https://proxy.transport.data.gouv.fr/resource/sncf-siri-lite-estimated-timetable",
+        "return": "xml",
+        "coverage": "TGV, Intercités, TER",
+        "enabled": true
+    }
+]
