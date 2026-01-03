@@ -1,0 +1,1 @@
+export { getStopFromId } from "./getFromId";

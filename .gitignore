@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# data
+data/gtfs-idfm/
+data/gtfs-sncf/
+data/network/
+data/output/
+public/network/rails.json
+public/network/gares.geojson
+public/network/trainNetwork.json
+public/gtfs/
+
