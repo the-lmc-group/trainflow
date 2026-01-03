@@ -173,7 +173,7 @@ export function TrainDetailsContent({ train }: { train: InterpolatedJourney }) {
   );
 }
 
-function TrainStatus({ train }: { train: InterpolatedJourney }) {
+export function TrainStatus({ train }: { train: InterpolatedJourney }) {
   const [status, setStatus] = useState<string>("");
 
   useEffect(() => {
@@ -218,6 +218,78 @@ function TrainStatus({ train }: { train: InterpolatedJourney }) {
   return <div className="text-xs text-muted-foreground mt-1">{status}</div>;
 }
 
+export function TrainActions({
+  onZoom,
+  onFollow,
+  onFilter,
+  isFollowing,
+  isFiltered,
+}: {
+  onZoom: () => void;
+  onFollow: () => void;
+  onFilter: () => void;
+  isFollowing: boolean;
+  isFiltered: boolean;
+}) {
+  return (
+    <div className="flex gap-1 mt-2">
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-8 w-8"
+              onClick={onZoom}
+            >
+              <ZoomIn className="h-4 w-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Zoomer sur le train</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant={isFollowing ? "default" : "outline"}
+              size="icon"
+              className="h-8 w-8"
+              onClick={onFollow}
+            >
+              <Eye className="h-4 w-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{isFollowing ? "Ne plus suivre" : "Suivre le train"}</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant={isFiltered ? "default" : "outline"}
+              size="icon"
+              className="h-8 w-8"
+              onClick={onFilter}
+            >
+              <Filter className="h-4 w-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>
+              {isFiltered
+                ? "Afficher tous les trains"
+                : "Afficher uniquement ce train"}
+            </p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    </div>
+  );
+}
+
 export function TrainDetailsCard({
   train,
   onClose,
@@ -254,61 +326,13 @@ export function TrainDetailsCard({
         </Button>
       </div>
 
-      <div className="flex gap-1 mt-2">
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8"
-                onClick={onZoom}
-              >
-                <ZoomIn className="h-4 w-4" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Zoomer sur le train</p>
-            </TooltipContent>
-          </Tooltip>
-
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant={isFollowing ? "default" : "outline"}
-                size="icon"
-                className="h-8 w-8"
-                onClick={onFollow}
-              >
-                <Eye className="h-4 w-4" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{isFollowing ? "Ne plus suivre" : "Suivre le train"}</p>
-            </TooltipContent>
-          </Tooltip>
-
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant={isFiltered ? "default" : "outline"}
-                size="icon"
-                className="h-8 w-8"
-                onClick={onFilter}
-              >
-                <Filter className="h-4 w-4" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>
-                {isFiltered
-                  ? "Afficher tous les trains"
-                  : "Afficher uniquement ce train"}
-              </p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </div>
+      <TrainActions
+        onZoom={onZoom}
+        onFollow={onFollow}
+        onFilter={onFilter}
+        isFollowing={isFollowing}
+        isFiltered={isFiltered}
+      />
 
       <div className="mt-2">
         <TrainDetailsContent train={train} />

@@ -1,7 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Map as MapIcon, Zap, BarChart3 } from "lucide-react";
+import {
+  ArrowRight,
+  Map as MapIcon,
+  Zap,
+  BarChart3,
+  Github,
+} from "lucide-react";
 
 export default function LandingPage() {
   return (
@@ -32,6 +38,15 @@ export default function LandingPage() {
               className="transition-colors text-zinc-400 hover:text-white"
             >
               Carte
+            </Link>
+            <Link
+              href="https://github.com/the-lmc-group/trainflow"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors text-zinc-400 hover:text-white flex items-center gap-2"
+            >
+              <Github className="h-4 w-4" />
+              GitHub
             </Link>
           </nav>
         </div>

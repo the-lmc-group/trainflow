@@ -26,6 +26,8 @@ import { StatsCard } from "@/components/map/StatsCard";
 import {
   TrainDetailsCard,
   TrainDetailsContent,
+  TrainActions,
+  TrainStatus,
 } from "@/components/map/TrainDetails";
 import { TrainsLayer } from "@/components/map/TrainsLayer";
 import { StationsLayer } from "@/components/map/StationsLayer";
@@ -217,6 +219,7 @@ export default function MapView() {
                 <DrawerTitle>
                   {selectedTrain?.journey.PublishedLineName || "Train"}
                 </DrawerTitle>
+                {selectedTrain && <TrainStatus train={selectedTrain} />}
                 <DrawerDescription>
                   N°{" "}
                   {
@@ -225,8 +228,21 @@ export default function MapView() {
                   }
                 </DrawerDescription>
               </DrawerHeader>
-              <div className="p-4 pb-0">
-                {selectedTrain && <TrainDetailsContent train={selectedTrain} />}
+              <div className="p-4 pb-0 overflow-y-auto max-h-[60vh]">
+                {selectedTrain && (
+                  <>
+                    <TrainActions
+                      onZoom={handleZoomToTrain}
+                      onFollow={handleFollowTrain}
+                      onFilter={handleFilterTrain}
+                      isFollowing={followingTrainId === selectedTrainId}
+                      isFiltered={filterTrainId === selectedTrainId}
+                    />
+                    <div className="mt-4">
+                      <TrainDetailsContent train={selectedTrain} />
+                    </div>
+                  </>
+                )}
               </div>
               <DrawerFooter>
                 <DrawerClose asChild>
