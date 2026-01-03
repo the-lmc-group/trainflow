@@ -39,7 +39,7 @@ export default function LegalPage() {
           <p className="text-zinc-400">
             Ce site est hébergé par Orion Hosting.
             <br />
-            Adresse : https://orionhosting.xyz
+            Adresse : https://orionhost.xyz
           </p>
         </section>
 
