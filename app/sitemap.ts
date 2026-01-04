@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://trainflow.io";
+  const baseUrl = "https://trainflow.lmcgroup.xyz";
 
   return [
     {
